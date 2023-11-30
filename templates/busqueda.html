@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Busqueda</title>
+    </head>
+    <body>
+        <h2>Ingresa una palabra en ingles</h2>
+        <form action="/programa/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="entrada">
+            <input type="submit" value="Buscar">
+        </form>
+    </body>
+</html>
