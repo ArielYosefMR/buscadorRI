@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from project_name import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='busqueda/', permanent=False)),
     path('admin/', admin.site.urls),
     path('saludo/', views.saludo),
     path('busqueda/', views.buscar),
