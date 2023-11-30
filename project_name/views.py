@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.views.decorators.csrf import csrf_exempt
@@ -13,7 +12,7 @@ def saludo(request):
 @csrf_exempt
 def buscar(request):
 
-    doc_externo=open("D:/Program Files/django/proyectos/project_name/project_name/templates/busqueda.html")
+    doc_externo=open("/home/ArielYosef/buscadorRI/buscadorRI/templates/busqueda.html")
     plt = Template(doc_externo.read())
     doc_externo.close()
     ctx = Context()
@@ -25,18 +24,17 @@ def buscar(request):
 def programa(request):
     if request.method == 'POST':
         palabra_buscar = request.POST.get('entrada')
-        nombre_archivo_diccionario1 = 'D:/Program Files/django/proyectos/project_name/project_name/indiceParte1.txt'
-        nombre_archivo_diccionario2 = 'D:/Program Files/django/proyectos/project_name/project_name/indiceParte2.txt'
-        
-        msg = '<html><body><h2>Resultados</h2><form action="/busqueda/" method="POST"><Input type="submit" value="Regresar"></form></body></html>'
+        nombre_archivo_diccionario1 = '/home/ArielYosef/buscadorRI/buscadorRI/indiceParte1.txt'
+        nombre_archivo_diccionario2 = '/home/ArielYosef/buscadorRI/buscadorRI/indiceParte2.txt'
 
+        msg = '<html><body><h2>Resultados</h2><form action="/busqueda/" method="POST"><Input type="submit" value="Regresar"></form></body></html>'
         try:
             with open(nombre_archivo_diccionario1, 'r') as archivo:
                 diccionario_cargado = archivo.read()
             with open(nombre_archivo_diccionario2, 'r') as archivo:
                 diccionario_cargado += archivo.read()
         except Exception as e:
-            print(f'{e}')     
+            print(f'{e}')
 
         inicio = time.time()
         try:
